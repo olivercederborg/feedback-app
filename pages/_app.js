@@ -1,3 +1,4 @@
+import '../styles/globals.css';
 import { ProvideAuth } from '../lib/auth';
 
 function MyApp({ Component, pageProps }) {
