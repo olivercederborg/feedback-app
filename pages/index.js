@@ -1,71 +1,67 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import {
+  Box,
+  Button,
+  Code,
+  Flex,
+  Heading,
+  Icon,
+  Link,
+  Text
+} from '@chakra-ui/react';
+import Head from 'next/head';
+import { useAuth } from '@/lib/auth';
+import { InfoIcon } from '@chakra-ui/icons';
 
 export default function Home() {
-	return (
-		<div className={styles.container}>
-			<Head>
-				<title>Create Next App</title>
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
+  const auth = useAuth();
 
-			<main className={styles.main}>
-				<h1 className={styles.title}>Feedback App</h1>
+  return (
+    <div>
+      <Head>
+        <title>Feedback App</title>
+      </Head>
+      {/* <Flex
+        as="main"
+        direction="column"
+        align="center"
+        justify="center"
+        maxW="100vw"
+        height="80vh"
+      >
+        <Heading>Feedback App</Heading>
+        <InfoIcon color="black" w={20} h={20} />
+        <Text>
+          Current User: <Code>{auth.user ? auth.user.email : 'None'}</Code>
+        </Text>
+        {auth.user ? (
+          <Button onClick={(e) => auth.signout()}>Sign Out</Button>
+        ) : (
+          <Button onClick={(e) => auth.signinWithGitHub()}>Sign In</Button>
+        )}
+      </Flex> */}
 
-				<p className={styles.description}>
-					Get started by editing{" "}
-					<code className={styles.code}>pages/index.js</code>
-				</p>
-
-				<div className={styles.grid}>
-					<a href='https://nextjs.org/docs' className={styles.card}>
-						<h3>Documentation &rarr;</h3>
-						<p>
-							Find in-depth information about Next.js features and API.
-						</p>
-					</a>
-
-					<a href='https://nextjs.org/learn' className={styles.card}>
-						<h3>Learn &rarr;</h3>
-						<p>
-							Learn about Next.js in an interactive course with quizzes!
-						</p>
-					</a>
-
-					<a
-						href='https://github.com/vercel/next.js/tree/master/examples'
-						className={styles.card}>
-						<h3>Examples &rarr;</h3>
-						<p>
-							Discover and deploy boilerplate example Next.js projects.
-						</p>
-					</a>
-
-					<a
-						href='https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-						className={styles.card}>
-						<h3>Deploy &rarr;</h3>
-						<p>
-							Instantly deploy your Next.js site to a public URL with
-							Vercel.
-						</p>
-					</a>
-				</div>
-			</main>
-
-			<footer className={styles.footer}>
-				<a
-					href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'>
-					Powered by{" "}
-					<img
-						src='/vercel.svg'
-						alt='Vercel Logo'
-						className={styles.logo}
-					/>
-				</a>
-			</footer>
-		</div>
-	);
+      <Flex
+        as="header"
+        justify="space-between"
+        align="center"
+        h="auto"
+        bg="gray.800"
+        color="white"
+      >
+        <Box as="nav">
+          <InfoIcon marginLeft="6" color="white" w={10} h={10} />
+          <Link marginLeft="10" paddingY="5">
+            Sites
+          </Link>
+          <Link marginLeft="10" paddingY="5">
+            Feedback
+          </Link>
+        </Box>
+        <Box>
+          <Link>Account</Link>
+          <InfoIcon color="black" w={8} h={8} />
+        </Box>
+      </Flex>
+    </div>
+  );
 }
