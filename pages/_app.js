@@ -19,6 +19,7 @@ const GlobalStyle = ({ children }) => {
           body {
             font-size: 16px;
             box-sizing: border-box;
+            /* font-family: 'Inter'; */
           }
 
           #__next {
