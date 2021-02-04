@@ -19,6 +19,14 @@ export default function Home() {
   return (
     <div>
       <Head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          if (document.cookie && document.cookie.includes('feedback-auth')) {
+            window.location.href = "/dashboard"
+          }`
+          }}
+        />
         <title>Feedback App</title>
       </Head>
 
@@ -52,15 +60,13 @@ export default function Home() {
                   color="gray.700"
                   variant="ghost"
                   marginRight="5"
-                  // _hover={{ color: 'black', variant: 'ghost' }}
                   onClick={(e) => auth.signout()}
                 >
                   Sign Out
                 </Button>
                 <Link display="flex" alignItems="center">
-                  {/* <Text marginRight="5">Account</Text> */}
                   <Box boxSize="50px">
-                    <Image rounded="full" src={auth.user.photoUrl} alt="" />
+                    <Image rounded="full" src={auth.user.photoUrl} />
                   </Box>
                 </Link>
               </Flex>
@@ -87,7 +93,7 @@ export default function Home() {
             </Text>
             <Flex direction="column" alignItems="center" marginTop="14">
               <Text>Sign in with the following options.</Text>
-              <Flex>
+              <Flex direction="column">
                 <Button
                   colorScheme="blackAlpha"
                   bg="blackAlpha.900"
@@ -98,18 +104,17 @@ export default function Home() {
                   paddingX="5"
                 >
                   <Icon as={GrGithub} marginRight="2" w="5" h="5" />
-                  GitHub
+                  Continue with GitHub
                 </Button>
                 <Button
                   marginTop="5"
                   color="black"
-                  onClick={(e) => auth.signinWithGitHub()}
+                  onClick={(e) => auth.signinWithGoogle()}
                   marginX="2"
                   paddingX="5"
-                  disabled
                 >
                   <Icon as={GrGoogle} marginRight="2" w="5" h="5" />
-                  Google
+                  Continue with Google
                 </Button>
               </Flex>
             </Flex>
