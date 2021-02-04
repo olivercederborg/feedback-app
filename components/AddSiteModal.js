@@ -19,7 +19,6 @@ import {
 
 import { createSite } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
-import fetcher from '@/utils/fetcher';
 
 const AddSiteModal = ({ children }) => {
   const initialRef = useRef();
@@ -27,7 +26,6 @@ const AddSiteModal = ({ children }) => {
   const auth = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { handleSubmit, register } = useForm();
-  const { data } = useSWR('/api/sites', fetcher);
 
   const onCreateSite = ({ name, url }) => {
     const newSite = {
